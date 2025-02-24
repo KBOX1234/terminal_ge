@@ -1,3 +1,5 @@
+#define CPP_NETWORKING
+
 #include "tge.h"
 
 int main(){
@@ -34,7 +36,7 @@ int main(){
 
         draw_vector_line(line);
 
-        draw_animated_sprite(&spr, 1, spr_pos);
+        draw_animated_sprite(&spr, 0, spr_pos);
 
         scan_input();
 
@@ -42,6 +44,11 @@ int main(){
             system("reset");
             return 0;
         }
+
+        if(is_key_pressed('w')) spr_pos.y--;
+        if(is_key_pressed('s')) spr_pos.y++;
+        if(is_key_pressed('a')) spr_pos.x--;
+        if(is_key_pressed('d')) spr_pos.x++;
 
         update();
     }

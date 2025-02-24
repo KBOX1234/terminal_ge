@@ -7,3 +7,6 @@
 [submodule "tgl_gui"]
 	path = tgl_gui
 	url = https://github.com/KBOX1234/tgl_gui.git
+[submodule "dyad"]
+	path = dyad
+	url = https://github.com/rxi/dyad.git

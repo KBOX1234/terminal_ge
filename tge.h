@@ -5,6 +5,7 @@
 #include <SDL2/SDL_mixer.h>
 #include <stdbool.h>
 #include <dirent.h>
+#include "dyad.h"
 
 #define IMG_LOADING
 
@@ -68,3 +69,8 @@ struct animated_sprite new_animated_sprite_from_folder(const char* dname, int fr
 void draw_animated_sprite(struct animated_sprite* spr, char square_pixel_aspect, struct vector_2 pos);
 
 #include "include/sprite.c"
+
+
+
+#include "include/client.c"
+#include "include/server.c"
