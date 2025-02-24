@@ -23,7 +23,9 @@ struct sfx{
     Mix_Chunk *data;
 };
 
-void init_tge();
+struct window* debug_win;
+
+void init_tge(char* name);
 
 struct music load_music(const char* fname);
 struct sfx load_sfx(const char* fname);
