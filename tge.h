@@ -23,29 +23,42 @@
 
 #define FPS 60
 
+
+//tge music wrapper
 struct music{
     Mix_Music *data;
 };
 
+//tge sfx wrapper
 struct sfx{
     Mix_Chunk *data;
 };
 
+
+//window that all debug info is sent to
 struct window* debug_win;
 
+
+//inits tge and sets the window name
 void init_tge(char* name);
 
+//load music
 struct music load_music(const char* fname);
+
+//load sfx
 struct sfx load_sfx(const char* fname);
 
 #include "include/init.c"
 #include "include/sound.c"
 
+
+//vector 2
 struct vector_2{
     int x;
     int y;
 };
 
+//vector line
 struct vector_line{
     char color;
     char char_;
@@ -53,10 +66,13 @@ struct vector_line{
     struct vector_2 v2;
 };
 
+
+//function for drawing vector lines
 void draw_vector_line(struct vector_line line);
 
 #include "include/vector.c"
 
+//animated sprite struct
 struct animated_sprite{
     struct text_image* img;
     int frame_count;
@@ -66,12 +82,15 @@ struct animated_sprite{
     int tick_counter;
 };
 
+//new animated sprite
 struct animated_sprite new_animated_sprite_from_folder(const char* dname, int frame_rate, const char* file_extention);
 
+//draw animated sprite
 void draw_animated_sprite(struct animated_sprite* spr, char square_pixel_aspect, struct vector_2 pos);
 
 #include "include/sprite.c"
 
+//combine a text texture and a color texture
 struct text_image mash_color_and_text(struct text_image color, struct text_image text);
 
 #include "include/texture.c"

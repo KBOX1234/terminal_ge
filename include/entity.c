@@ -31,7 +31,7 @@ void move_in_direction(struct entity* friend, float angle, int distance){
 
 struct entity new_entity(struct point pos, struct text_image img, int id){
     struct entity friend;
-    friend.animation_count = -1;
+    friend.animation_count = 0;
     friend.has_animations = false;
     friend.has_colide_box = false;
     friend.has_texture = true;
@@ -49,27 +49,32 @@ struct entity new_entity(struct point pos, struct text_image img, int id){
     return friend;
 }
 
-void add_animation(struct animated_sprite spr, struct entity* friend){
+void add_animation(struct animated_sprite spr, struct entity* friend) {
     friend->has_animations = true;
-    friend->animation_count++;
 
-    struct animated_sprite* tmp_spr = (struct animated_sprite*)malloc(sizeof(struct animated_sprite)*friend->animation_count);
-
-    if(friend->animation_count - 1 > -1){
-        memcpy(tmp_spr, friend->animations, sizeof(struct animated_sprite) * (friend->animation_count - 1));
+    struct animated_sprite* tmp_spr = (struct animated_sprite*)malloc(sizeof(struct animated_sprite) * (friend->animation_count + 1));
+    if (!tmp_spr) {
+        printf_win(debug_win, 0x40, "Memory allocation failed for animations\n");
+        return;
     }
-    //free(friend->animations);
+
+    if (friend->animation_count > 0) {
+        memcpy(tmp_spr, friend->animations, sizeof(struct animated_sprite) * friend->animation_count);
+        free(friend->animations); // Free old memory after copying
+    }
+
+    tmp_spr[friend->animation_count] = spr;
 
     friend->animations = tmp_spr;
-
-    friend->animations[friend->animation_count] = spr;
+    friend->animation_count++;
 }
+
 
 void draw_entity(struct entity* friend){
     update_from_master(friend);
     if(friend->is_transperent == false){
         if(friend->has_animations == true){
-            printf("AAA\n"); 
+            //printf("AAA\n"); 
             draw_animated_sprite(&friend->animations[friend->active_animation], friend->square_pixel_aspect, friend->pos);
         }
     

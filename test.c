@@ -33,8 +33,10 @@ int main(){
     struct entity friend = new_entity(v2p(spr_pos), default_t, 1);
 
     spr = new_animated_sprite_from_folder("test_animation", 2, "png");
+    struct animated_sprite spr2 = new_animated_sprite_from_folder("second_animation", 2, "png");
 
     add_animation(spr, &friend);
+    add_animation(spr2, &friend);
 
     //friend.has_animations = false;
     //friend.has_texture = true;
@@ -62,6 +64,9 @@ int main(){
         if(is_key_pressed('s')) spr_pos.y++;
         if(is_key_pressed('a')) spr_pos.x--;
         if(is_key_pressed('d')) spr_pos.x++;
+
+        if(is_key_pressed('e')) friend.active_animation = 0;
+        if(is_key_pressed('r')) friend.active_animation = 1;
 
         update();
     }

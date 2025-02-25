@@ -39,7 +39,7 @@ struct animated_sprite new_animated_sprite_from_folder(const char* dname, int fr
 
     struct animated_sprite return_v;
 
-    return_v.img = (struct text_image*)malloc(sizeof(struct text_image)*(file_count-1));
+    return_v.img = (struct text_image*)malloc(sizeof(struct text_image)*(file_count));
 
     return_v.frame_count = file_count-1;
     return_v.frame_rate = frame_rate;
