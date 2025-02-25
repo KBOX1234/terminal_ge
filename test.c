@@ -24,10 +24,20 @@ int main(){
     struct animated_sprite spr;
 
     struct vector_2 spr_pos;
+
+    struct text_image default_t = load_image_to_text("test_animation/0.png", ' ');
+
     spr_pos.x = 20;
     spr_pos.y = 20;
 
+    struct entity friend = new_entity(v2p(spr_pos), default_t);
+
     spr = new_animated_sprite_from_folder("test_animation", 2, "png");
+
+    add_animation(spr, &friend);
+
+    //friend.has_animations = false;
+    //friend.has_texture = true;
     
     while(1){
         fill_screen('#', 0x5e);
@@ -39,6 +49,9 @@ int main(){
         draw_animated_sprite(&spr, 0, spr_pos);
 
         scan_input();
+
+
+        draw_entity(&friend);
 
         if(is_key_pressed('q')){
             system("reset");

@@ -1,4 +1,4 @@
-flags="-lm `sdl2-config --cflags --libs` -lSDL2_mixer -fpermissive"
+flags="-lm `sdl2-config --cflags --libs` -lSDL2_mixer -g"
 include="-I./terminal_gl -I./stb -I./tgl_gui -I./dyad/src -I./sphysics"
 
 gcc test.c -o test $flags $include

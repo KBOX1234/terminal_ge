@@ -90,6 +90,7 @@ struct entity{
 
     bool has_animations;
     int animation_count;
+    int active_animation;
     struct animated_sprite* animations;
     
 
@@ -98,7 +99,7 @@ struct entity{
     bool has_colide_box;
     bool square_pixel_aspect;
     struct colideBox box;
-    int size;
+    struct vector_2 size;
 
     void* custom_data;
 };
