@@ -30,7 +30,7 @@ int main(){
     spr_pos.x = 20;
     spr_pos.y = 20;
 
-    struct entity friend = new_entity(v2p(spr_pos), default_t);
+    struct entity friend = new_entity(v2p(spr_pos), default_t, 1);
 
     spr = new_animated_sprite_from_folder("test_animation", 2, "png");
 

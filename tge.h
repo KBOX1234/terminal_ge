@@ -102,6 +102,10 @@ struct entity{
     struct vector_2 size;
 
     void* custom_data;
+
+    long id;
+
+    bool solid;
 };
 
 void add_default_texture(struct text_image img, struct entity* friend);
@@ -112,4 +116,42 @@ void update_from_master(struct entity* friend);
 
 void move_in_direction(struct entity* friend, float angle, int distance);
 
+struct entity new_entity(struct point pos, struct text_image img, int id);
+
+void add_animation(struct animated_sprite spr, struct entity* friend);
+
+void draw_entity(struct entity* friend);
+
 #include "include/entity.c"
+
+struct object{
+    struct vector_2 pos;
+
+    bool has_texture;
+    struct text_image texture;
+
+    bool is_transperent;
+
+    bool has_colide_box;
+    bool square_pixel_aspect;
+    struct colideBox box;
+    struct vector_2 size;
+
+    void* custom_data;
+
+    long id;
+
+    bool solid;
+};
+
+struct object new_object(int id);
+
+void set_object_texture(struct object* obj, struct text_image img);
+
+void set_object_pos(struct object* obj, struct vector_2 pos);
+
+void update_obj(struct object* obj);
+
+void draw_object(struct object* obj);
+
+#include "include/object.c"

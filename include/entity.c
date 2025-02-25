@@ -29,7 +29,7 @@ void move_in_direction(struct entity* friend, float angle, int distance){
     friend->master_pos.y += dist * sin(angle_rad);
 }
 
-struct entity new_entity(struct point pos, struct text_image img){
+struct entity new_entity(struct point pos, struct text_image img, int id){
     struct entity friend;
     friend.animation_count = -1;
     friend.has_animations = false;
@@ -43,6 +43,8 @@ struct entity new_entity(struct point pos, struct text_image img){
     friend.square_pixel_aspect = false;
     friend.texture = img;
     friend.active_animation = 0;
+
+    friend.solid = true;
 
     return friend;
 }
