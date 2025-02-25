@@ -5,7 +5,9 @@
 #include <SDL2/SDL_mixer.h>
 #include <stdbool.h>
 #include <dirent.h>
+#include <math.h>
 #include "dyad.h"
+#include "sphysics.h"
 
 #define IMG_LOADING
 
@@ -70,7 +72,43 @@ void draw_animated_sprite(struct animated_sprite* spr, char square_pixel_aspect,
 
 #include "include/sprite.c"
 
+struct text_image mash_color_and_text(struct text_image color, struct text_image text);
+
+#include "include/texture.c"
+#include "include/utill.c"
 
 
-#include "include/client.c"
-#include "include/server.c"
+//normal entity
+struct entity{
+    bool is_player;
+    struct point master_pos;
+
+    struct vector_2 pos;
+
+    bool has_texture;
+    struct text_image texture;
+
+    bool has_animations;
+    int animation_count;
+    struct animated_sprite* animations;
+    
+
+    bool is_transperent;
+
+    bool has_colide_box;
+    bool square_pixel_aspect;
+    struct colideBox box;
+    int size;
+
+    void* custom_data;
+};
+
+void add_default_texture(struct text_image img, struct entity* friend);
+
+void add_default_texture_from_file(struct entity* friend, const char* fname);
+
+void update_from_master(struct entity* friend);
+
+void move_in_direction(struct entity* friend, float angle, int distance);
+
+#include "include/entity.c"

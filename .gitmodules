@@ -10,3 +10,6 @@
 [submodule "dyad"]
 	path = dyad
 	url = https://github.com/rxi/dyad.git
+[submodule "sphysics"]
+	path = sphysics
+	url = https://github.com/KBOX1234/sphysics.git
