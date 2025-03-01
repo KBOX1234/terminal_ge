@@ -6,7 +6,6 @@
 #include <stdbool.h>
 #include <dirent.h>
 #include <math.h>
-#include "dyad.h"
 #include "sphysics.h"
 
 #define IMG_LOADING
