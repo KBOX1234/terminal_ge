@@ -21,6 +21,48 @@
     #include "impl/backend_linux.c"
 #endif
 
+//window that all debug info is sent to
+struct window* debug_win;
+
+
+#ifdef ENET_NETWORKING
+#include "enet/enet.h"
+
+ENetHost *client;
+ENetPeer *server;
+ENetEvent event = {};
+
+#define CHANNELS 2
+
+#pragma pack(push, 1)
+
+struct packaged_packet{
+    size_t size;
+    void* data;
+};
+
+#pragma pack(pop)
+
+#define DISCONNECED 1
+
+struct packaged_packet package_packet(void* packet, size_t size);
+
+int send_packet(struct packaged_packet p);
+
+void* unpackage_packet(struct packaged_packet p);
+
+#include "networking/packet.c"
+
+void send_data_tgl_ge(void *data, size_t s, ENetPeer *to);
+
+int connect_to_server(const char* ip_adress, enet_uint16 port);
+
+int recive_packet(int max_wait_time, struct packaged_packet* p);
+
+#include "networking/request.c"
+
+#endif
+
 #define FPS 60
 
 
@@ -34,9 +76,6 @@ struct sfx{
     Mix_Chunk *data;
 };
 
-
-//window that all debug info is sent to
-struct window* debug_win;
 
 
 //inits tge and sets the window name

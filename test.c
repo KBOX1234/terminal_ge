@@ -1,4 +1,4 @@
-#define CPP_NETWORKING
+#define ENET_NETWORKING
 
 #include "tge.h"
 
