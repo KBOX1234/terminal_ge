@@ -174,3 +174,9 @@ void update_obj(struct object* obj);
 void draw_object(struct object* obj);
 
 #include "include/object.c"
+
+bool do_entities_colide(struct entity* e1, struct entity* e2);
+
+bool does_entity_and_object_colide(struct entity* e, struct object* o);
+
+#include "include/colide.c"

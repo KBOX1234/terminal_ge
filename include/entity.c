@@ -13,11 +13,7 @@ void add_default_texture_from_file(struct entity* friend, const char* fname){
 void update_from_master(struct entity* friend){
     friend->pos = p2v(friend->master_pos);
 
-    friend->box.a = v2p(friend->pos);
-    friend->box.b = v2p(friend->pos);
-
-    friend->box.b.x = friend->box.b.x + friend->size.x;
-    friend->box.b.y = friend->box.b.y + friend->size.y;
+    moveBox(friend->box, friend->master_pos);
 }
 
 void move_in_direction(struct entity* friend, float angle, int distance){
