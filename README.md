@@ -48,3 +48,28 @@ int main(){
 
 ## Why do I need this?
 (Its the same reason you use chat gpt)
+
+# Setting up
+Here is a simple setup guide.
+## Linux
+All you need to do is to locate the names of the packages for: sdl and sdl_mixer for your distro and install it with your package manager.
+
+After that rember to include these gcc library flags: -lSDL2_mixer -lSDL2 -lm
+You will also need to add the include directories: terminal_gl, terminal_gl/stb, and tgl_ui with the -I gcc flag.
+
+The build command should look somthing like this:
+```sh
+gcc test.c -o test -lm `sdl2-config --cflags --libs` -lSDL2_mixer -g -I./terminal_gl -I./stb -I./tgl_gui -I./dyad/src -I./sphysics
+```
+
+## Windows
+Download the [sdl2_mixer runtime](https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.8.1/SDL2_mixer-2.8.1-win32-x86.zip), locate SDL2_mixer.dll and include it next to your executable. Also do the same with [SDL2 runtime](https://github.com/libsdl-org/SDL/releases/download/release-2.32.2/SDL2-2.32.2-win32-x86.zip).
+
+Next download the [SDL2 mixer](https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.8.1/SDL2_mixer-devel-2.8.1-mingw.zip) and [SDL2](https://github.com/libsdl-org/SDL/releases/download/release-2.32.2/SDL2-devel-2.32.2-mingw.zip) sorce code. Create a folder in C: and name it sdl2. Find the folders: include, lib, and bin in the sld2 and sld2_mixer sorce folders and copy them into C:\sdl2 and your done.
+
+To build, include these flags: -lSDL2_mixer -lSDL2 -lm, and these include flags: IC:\sdl2\include\ -LC:\sdl2\lib
+
+The build command should look somthing like this:
+```sh
+gcc test.c -o test -lm -g -I./terminal_gl -I./stb -I./tgl_gui -I./dyad/src -I./sphysics IC:\sdl2\include\ -LC:\sdl2\lib -lSDL2_mixer -lSDL2
+```
