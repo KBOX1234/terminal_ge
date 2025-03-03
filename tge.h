@@ -28,9 +28,11 @@ struct window* debug_win;
 #ifdef ENET_NETWORKING
 #include "enet/enet.h"
 
-ENetHost *client;
-ENetPeer *server;
-ENetEvent event = {};
+extern ENetHost *client;
+extern ENetPeer *server;
+extern ENetEvent event;
+
+#include "networking/network.c"
 
 #define CHANNELS 2
 
@@ -43,7 +45,7 @@ struct packaged_packet{
 
 #pragma pack(pop)
 
-#define DISCONNECED 1
+#define DISCONNECTED 1
 
 struct packaged_packet package_packet(void* packet, size_t size);
 
@@ -57,7 +59,7 @@ void send_data_tgl_ge(void *data, size_t s, ENetPeer *to);
 
 int connect_to_server(const char* ip_adress, enet_uint16 port);
 
-int recive_packet(int max_wait_time, struct packaged_packet* p);
+int receive_packet(int max_wait_time, struct packaged_packet* p);
 
 #include "networking/request.c"
 

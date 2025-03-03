@@ -45,7 +45,7 @@ int connect_to_server(const char* ip_adress, enet_uint16 port){
     
 }
 
-int recive_packet(int max_wait_time, struct packaged_packet* p){
+int receive_packet(int max_wait_time, struct packaged_packet* p){
     while (enet_host_service(client, &event, max_wait_time) > 0)
     {
         switch (event.type)
@@ -71,7 +71,7 @@ int recive_packet(int max_wait_time, struct packaged_packet* p){
 
         case ENET_EVENT_TYPE_DISCONNECT:
         
-        return DISCONNECED;
+        return DISCONNECTED;
         break;
         }
     }
