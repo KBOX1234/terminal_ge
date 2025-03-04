@@ -1,6 +1,16 @@
 void init_tge(char* name){
+
+    #ifndef DEBUG_WINDOW_WIDTH
+    printf("No default debug window size\nAborting\n");
+    exit(-1);
+    #endif
+
+    #ifndef DEBUG_WINDOW_HEIGHT
+    printf("No default debug window size\nAborting\n");
+    exit(-1);
+    #endif
     init_window(name);
-    debug_win = create_window("tge debug window", 30, 15);
+    debug_win = create_window("tge debug window", DEBUG_WINDOW_WIDTH, DEBUG_WINDOW_HEIGHT);
 
     int error_counter = 0;
 

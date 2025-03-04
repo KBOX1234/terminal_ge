@@ -1,5 +1,8 @@
 #define ENET_NETWORKING
 
+#define DEBUG_WINDOW_WIDTH 60
+#define DEBUG_WINDOW_HEIGHT 30
+
 #include "tge.h"
 
 int main(){
