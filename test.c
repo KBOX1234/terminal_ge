@@ -38,11 +38,15 @@ int main(){
     add_animation(spr, &friend);
     add_animation(spr2, &friend);
 
+    struct text_image test_img = load_buffer("test.txt");
+
     //friend.has_animations = false;
     //friend.has_texture = true;
     
     while(1){
         fill_screen('#', 0x5e);
+
+        render_text_image(test_img, 1, 1, 0);
 
         render_window(debug_win, 3, 3);
 
@@ -54,6 +58,7 @@ int main(){
 
 
         draw_entity(&friend);
+
 
         if(is_key_pressed('q')){
             system("reset");
