@@ -65,9 +65,9 @@ int receive_packet(int max_wait_time, struct packaged_packet* p);
 
 #endif
 
-#define FPS 60
+int FPS = 60;
 
-
+#ifdef SDL_AUDIO
 //tge music wrapper
 struct music{
     Mix_Music *data;
@@ -78,20 +78,21 @@ struct sfx{
     Mix_Chunk *data;
 };
 
-
+#endif
 
 //inits tge and sets the window name
 void init_tge(char* name);
 
+#ifdef SDL_AUDIO
 //load music
 struct music load_music(const char* fname);
 
 //load sfx
 struct sfx load_sfx(const char* fname);
-
-#include "include/init.c"
 #include "include/sound.c"
 
+#endif
+#include "include/init.c"
 
 //vector 2
 struct vector_2{
@@ -221,3 +222,7 @@ bool do_entities_colide(struct entity* e1, struct entity* e2);
 bool does_entity_and_object_colide(struct entity* e, struct object* o);
 
 #include "include/colide.c"
+
+#define ESCAPE 0x1B
+
+#include "include/input.c"

@@ -14,6 +14,7 @@ void init_tge(char* name){
 
     int error_counter = 0;
 
+    #ifdef SDL_AUDIO
 
     if(SDL_Init(SDL_INIT_AUDIO) < 0) {
         printf_win(debug_win, 0x40, "sdl2 could not start\n");
@@ -23,6 +24,7 @@ void init_tge(char* name){
         printf_win(debug_win, 0x40, "sdl2 mixer could not start\n");
         error_counter++;
     }
+    #endif
 
     printf_win(debug_win, 0xf0, "%s has started with %d error(s)\n", name, error_counter);
 
