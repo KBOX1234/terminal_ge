@@ -1,9 +1,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#ifdef SDL_AUDIO
 #define SDL_MAIN_HANDLED
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
+#endif
 #include <stdbool.h>
 #include <dirent.h>
 #include <math.h>
